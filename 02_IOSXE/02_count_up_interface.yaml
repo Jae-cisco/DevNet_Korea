@@ -3,33 +3,41 @@
   roles:
     - ../roles/ansible-pyats
   tasks:
-    - name: 1. show interfaces summary 커맨드 결과값 가져오기 (Get the output of the command "show interfaces summary")
+    - name: 1. show interfaces 커맨드 결과값 가져오기 (Get the output of the command "show interfaces")
       pyats_parse_command:
-        command: show interfaces summary
-      register: interface_summary_output
+        command: show interfaces
+      register: interface_output
 
-    - name: 2. 파싱된 커맨드 아웃풋 보여주기 (Print out the variable interface_summary_output)
+    - name: 2. 파싱된 커맨드 아웃풋 보여주기 (Print out the variable interface_output)
       debug: 
-        msg: "{{ interface_summary_output.structured }}"
+        msg: "{{ interface_output.structured }}"
 
-    - name: 3. GigabitEthernet 인터페이스만 저장하기 (Save the Interfaces which name contains 'GigabitEthernet' in the variable "ethernet_interface_list")
-      set_fact:
-        ethernet_interface_list: "{{ interface_summary_output.structured | json_query('interfaces.[*][0][?contains(name,`GigabitEthernet`)]')}}"
+    - name: 3. 인터페이스 type, status 만 저장하기 (Save the type & status of the interface)
+      set_fact: 
+        interface_type_status: "{{ interface_output | json_query('structured.*.{type : type, oper_status : oper_status}') }}"
 
-    - name: 4. GigabitEthernet 인터페이스만 보여주기 (Show the vairable "ethernet_interface_list")
-      debug: 
-        msg: "{{ ethernet_interface_list }}"
+    - name: 4. 인터페이스 type, status 보여주기 (Show the variable interface_type_status)
+      debug:
+        msg: "{{ interface_type_status }}"
 
-    - name: 5. GigabitEthernet 인터페이스 중 up인 인터페이스만 저장하기 (Save the interfaces which is up state in the variable "up_ethernet_interface_list")
-      set_fact:
-        up_ethernet_interface_list: "{{ ethernet_interface_list | json_query('[?up==`true`]')}}"
+    - name: 5. GigabitEthernet 인터페이스만 저장하기 (Save the interface which type is gigabit ethernet)
+      set_fact: 
+        interface_gigethernet: "{{ interface_type_status |  json_query('[?type == `Gigabit Ethernet`]') }}"
 
-    - name: 6. GigabitEthernet 인터페이스 중 up인 인터페이스만 보여주기 (Show the vairable "up_ethernet_interface_list")
-      debug: 
-        msg: "{{ up_ethernet_interface_list }}"
+    - name: 6. GigabitEthernet 인터페이스 보여주기
+      debug:
+        msg: "{{ interface_gigethernet }}"
 
-    - name: 7. 총 인터페이스 수 & up 인터페이스 수 보여주기 (Print out the total number of Interfaces & Up interfaces)
+    - name: 7. GigabitEthernet이면서 up 상태인 인터페이스만 저장하기 (Save the interface which is GigabitEthernet and up)
+      set_fact: 
+        interface_up: "{{ interface_gigethernet |  json_query('[?oper_status == `up`]') }}"
+
+    - name: 8. GigabitEthernet이면서 up 상태인 인터페이스만 보여주기 (Show the varaible interface_up)
+      debug:
+        msg: "{{ interface_up }}"
+
+    - name: 9. 총 인터페이스 수 & up 인터페이스 수 보여주기 (Print out the total number of Interfaces & Up interfaces)
       debug: 
         msg:    
-          - "Total number of Interfaces : {{ ethernet_interface_list | length }}"         
-          - "Total number of Up Interfaces : {{ up_ethernet_interface_list | length }}"
+          - "Total number of Gigabit Ethernet Interfaces : {{ interface_gigethernet | length }}"         
+          - "Total number of Gigabit Ethernet & Up Interfaces : {{ interface_up | length }}"
