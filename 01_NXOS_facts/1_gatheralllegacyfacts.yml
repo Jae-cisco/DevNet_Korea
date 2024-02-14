@@ -1,0 +1,10 @@
+---
+- hosts: nexus
+  gather_facts: false
+  tasks:
+    - name: Gather all legacy operation facts 정보 
+      cisco.nxos.nxos_facts:
+        gather_subset: all
+    - name: Show Gathered Facts
+      debug:
+        msg: "{{ ansible_facts }}"

@@ -1,0 +1,11 @@
+---
+- hosts: nexus
+  gather_facts: false
+  tasks:
+    - name: Run show version on Remote Device
+      cisco.nxos.nxos_command:
+        commands: show version
+      register: results
+    - name: Show results
+      debug:
+        msg: "{{ results.stdout_lines }}"
