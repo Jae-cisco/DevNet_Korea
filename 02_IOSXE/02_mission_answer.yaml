@@ -12,24 +12,41 @@
       debug: 
         msg: "{{ interface_output.structured }}"
 
-    - name: 3. GigabitEthernet 인터페이스만 저장하기 (Save the Interfaces which name contains 'GigabitEthernet' in the variable "ethernet_interface_list")
-      set_fact:
-        ethernet_interface_list: "{{ interface_output | json_query('structured.[*][0][?type == `Gigabit Ethernet`]')}}"
+    - name: 3. 인터페이스 type, status, mtu 저장하기 (Save the type & status & mtu of the interface)
+      set_fact: 
+        interface_type_status: "{{ interface_output | json_query('structured.*.{type : type, oper_status : oper_status, mtu : mtu}') }}"
 
-    - name: 4. GigabitEthernet 인터페이스만 보여주기 (Show the vairable "ethernet_interface_list")
-      debug: 
-        msg: "{{ ethernet_interface_list }}"
+    - name: 4. 인터페이스 type, status, mtu 보여주기 (Show the variable)
+      debug:
+        msg: "{{ interface_type_status }}"
 
-    - name: 5. !!MISSION!! GigabitEthernet 인터페이스 중 mtu가 1500인 인터페이스 저장하기 (Save the interfaces which has mtu 1500 in the variable "mtu_1500_ethernet_interface_list")
-      set_fact:
-        mtu_1500_ethernet_interface_list: "{{ ethernet_interface_list | json_query('[?mtu==`1500`]')}}"
+    - name: 5. GigabitEthernet 인터페이스만 저장하기 (Save the interface which type is gigabit ethernet)
+      set_fact: 
+        interface_gigethernet: "{{ interface_type_status |  json_query('[?type == `Gigabit Ethernet`]') }}"
 
-    - name: 6. GigabitEthernet 인터페이스 중 mtu가 1500인 인터페이스 저장하기 (Show the vairable "mtu_1500_ethernet_interface_list)
-      debug: 
-        msg: "{{ mtu_1500_ethernet_interface_list }}"
+    - name: 6. GigabitEthernet 인터페이스 보여주기
+      debug:
+        msg: "{{ interface_gigethernet }}"
 
-    - name: 7. 총 인터페이스 수 & mtu 1500인 인터페이스 수 보여주기 (Print out the total number of Interfaces & mtu 1500 interfaces)
+    - name: 7. GigabitEthernet이면서 up 상태인 인터페이스만 저장하기 (Save the interface which is GigabitEthernet and up)
+      set_fact: 
+        interface_up: "{{ interface_gigethernet |  json_query('[?oper_status == `up`]') }}"
+
+    - name: 8. GigabitEthernet이면서 up 상태인 인터페이스만 보여주기 (Show the varaible interface_up)
+      debug:
+        msg: "{{ interface_up }}"
+
+    - name: 7. GigabitEthernet이면서 up 상태이면서 mtu 1500인 인터페이스만 저장하기 (Save the interface which is GigabitEthernet and up and mtu 1500)
+      set_fact: 
+        interface_mtu: "{{ interface_gigethernet |  json_query('[?mtu == `1500`]') }}"
+
+    - name: 8. GigabitEthernet이면서 up 상태이면서 mtu 1500인 인터페이스만 보여주기 (Show the varaible interface_up)
+      debug:
+        msg: "{{ interface_mtu }}"
+
+    - name: 9. 총 인터페이스 수 & up 인터페이스 수 보여주기 (Print out the total number of Interfaces & Up interfaces)
       debug: 
         msg:    
-          - "Total number of Interfaces : {{ ethernet_interface_list | length }}"         
-          - "Total number of Interfaces mtu 1500 : {{ mtu_1500_ethernet_interface_list | length }}"
+          - "Total number of Gigabit Ethernet Interfaces : {{ interface_gigethernet | length }}"         
+          - "Total number of Gigabit Ethernet & Up Interfaces : {{ interface_up | length }}"
+          - "Total number of Gigabit Ethernet & Up & mtu 1500 Interfaces : {{ interface_mtu | length }}"
