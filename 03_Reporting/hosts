@@ -1,0 +1,8 @@
+[all:vars]
+ansible_connection=ansible.netcommon.network_cli
+ansible_user=admin
+ansible_password=1234abcd
+ansible_network_os=nxos
+
+[nxos]
+nxos1 ansible_host=10.10.10.10
