@@ -1,0 +1,9 @@
+[nexus:vars]
+ansible_connection= ansible.netcommon.network_cli
+ansible_user = admin
+ansible_password = C1sco12345
+ansible_network_os = cisco.nxos.nxos
+ansible_network_cli_ssh_type=paramiko
+
+[nexus]
+N9K ansible_host=198.18.135.100

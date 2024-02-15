@@ -1,0 +1,11 @@
+- hosts: nexus
+  gather_facts: false
+
+  tasks:
+    - name: Gather only hostname
+      cisco.nxos.nxos_facts:
+        gather_subset: legacy
+
+    - name: Print hostname
+      debug:
+        var: ansible_facts.net__hostname
