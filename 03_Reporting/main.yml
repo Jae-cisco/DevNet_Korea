@@ -65,7 +65,15 @@
     - debug:
         msg: 
           - "총 라우팅 테이블 수는 {{ route.structured.vrf.default.total_routes }} 입니다."
-         
+
+    - name: VPC Status Check
+      pyats_parse_command:
+        command:  show vpc
+      register: vpc
+    
+    - debug:
+        var: vpc.structured
+          
     # 'show interface' 명령을 실행하고 그 결과를 'output' 변수에 저장합니다.
     - name: Interface information
       pyats_parse_command:
