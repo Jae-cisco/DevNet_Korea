@@ -72,7 +72,13 @@
       register: vpc
     
     - debug:
-        var: vpc.structured
+        var: vpc.structured.vpc_peer_status
+    - debug:
+        msg:
+          - "VPC Peer 상태: {{ vpc.structured.vpc_peer_status }}"
+          - "VPC Keepalive 상태: {{ vpc.structured.vpc_peer_keepalive_status }}"
+          - "VPC Type 2 Consistency 상태: {{ vpc.structured.vpc_type_2_consistency_status }}"
+   
           
     # 'show interface' 명령을 실행하고 그 결과를 'output' 변수에 저장합니다.
     - name: Interface information
