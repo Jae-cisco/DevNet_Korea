@@ -65,7 +65,7 @@
     - debug:
         msg: 
           - "총 라우팅 테이블 수는 {{ route.structured.vrf.default.total_routes }} 입니다."
-
+    # VPC 상태를 체크합니다. 
     - name: VPC Status Check
       pyats_parse_command:
         command:  show vpc
