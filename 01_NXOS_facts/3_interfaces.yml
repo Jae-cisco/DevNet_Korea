@@ -1,7 +1,3 @@
----
-- hosts: nexus
-  gather_facts: false
-  tasks:
     - name: Gather only the interfaces resource facts and no legacy facts
       cisco.nxos.nxos_facts:
         gather_subset:
@@ -9,8 +5,3 @@
           - "!min"
         gather_network_resources:
           - interfaces
-    - name: Show Gathered Facts
-      debug:
-        msg: "{{ ansible_facts }}"
-
-
