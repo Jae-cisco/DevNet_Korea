@@ -84,8 +84,8 @@
       set_fact:
         interface_info: "{{ output.structured['Ethernet1/1'] }}" # 'interface_info' 변수에 'Ethernet1/1' 인터페이스의 정보를 저장합니다.
 
-    - debug:
-        var: interface_info
+    #- debug:
+    #    var: interface_info
 
     - name: Generate CSV file 
       template:
