@@ -96,7 +96,7 @@
     - name: Generate CSV file 
       template:
         src: templates/interface_info.j2
-        dest: interface_info.csv
+        dest: templates/interface_info.csv
 
     - name: Save interface information to a variable (여러개 인터페이스의 정보를 csv로 저장)
       set_fact:
@@ -105,7 +105,7 @@
     - name: Generate CSV_multi_interface file
       template:
         src: templates/multi_interface_info.j2
-        dest: multi_interface_info.csv
+        dest: templates/multi_interface_info.csv
 
 # Cisco Webex Teams에 메시지를 보내는 작업을 정의합니다.
     - name: Cisco Webex Teams - Text Message to a Room
