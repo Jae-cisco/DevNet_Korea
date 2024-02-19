@@ -3,7 +3,7 @@
   hosts: switches
   gather_facts: no
   roles:
-    - ../roles/ansible-pyats
+    - ../../roles/ansible-pyats
   tasks:
     - name: Spanning Tree Protocol # 작업의 이름을 정의합니다.
       pyats_parse_command: 
