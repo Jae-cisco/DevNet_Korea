@@ -1,0 +1,15 @@
+---
+- name: Gather interface facts from Cisco NXOS devices
+  hosts: switches
+  gather_facts: no
+  roles:
+    - ../roles/ansible-pyats
+  tasks:
+    - name: Device information (기기명, 버전명, 모델명, OS 출력) # 작업의 이름을 정의합니다.
+      pyats_parse_command: 
+        command: show spanning-tree interface GigabitEthernet 1/0/5 detail  # 실행할 명령을 정의합니다.
+      register: stp # 명령의 결과를 'stp' 변수에 저장합니다.
+
+    - debug: # debug 모듈을 사용하여 디버깅 메시지를 출력합니다.
+        msg: # 
+          - "Hostname: {{ stp.structured}}"
