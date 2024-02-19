@@ -5,7 +5,7 @@
   roles:
     - ../roles/ansible-pyats
   tasks:
-    - name: Device information (기기명, 버전명, 모델명, OS 출력) # 작업의 이름을 정의합니다.
+    - name: Spanning Tree Protocol # 작업의 이름을 정의합니다.
       pyats_parse_command: 
         command: show spanning-tree interface GigabitEthernet 1/0/5 detail  # 실행할 명령을 정의합니다.
       register: stp # 명령의 결과를 'stp' 변수에 저장합니다.
