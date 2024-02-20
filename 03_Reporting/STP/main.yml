@@ -30,32 +30,32 @@
       debug:
         msg: "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true` && value.spanning_tree_bpduguard==`disable`].{interface: key, value: value}') }}"
 
-    - name: Cisco Webex Teams - Text Message to a Room
-      community.general.cisco_webex: # community.general.cisco_webex 모듈을 사용합니다.
-        recipient_type: roomId       # 수신자 유형을 roomId로 설정합니다.
-        recipient_id: "Y2lzY29zcGFyazovL3VzL1JPT00vZWY0MmE0MTAtN2NkZS0xMWVlLTg3MGQtMDM0MTYwZmMyMmEx" # Webex에서 본인의 ID 토큰을 설정합니다.
-        msg_type: text               # 메시지 유형을 text로 설정합니다.
-        personal_token: "NjhiMTU0YzQtYWU3Ni00NDc0LTljOGQtZDNjOGM2OWVhYmZkM2QxZjA2ZTctMzNh_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f"
-        msg:
-          - "Portfast가 설정된 interface 리스트 입니다"
-          - "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true`].{interfacename: key}')}}"
-
-    - name: Cisco Webex Teams - Text Message to a Room
-      community.general.cisco_webex: # community.general.cisco_webex 모듈을 사용합니다.
-        recipient_type: roomId       # 수신자 유형을 roomId로 설정합니다.
-        recipient_id: "Y2lzY29zcGFyazovL3VzL1JPT00vZWY0MmE0MTAtN2NkZS0xMWVlLTg3MGQtMDM0MTYwZmMyMmEx" # Webex에서 본인의 ID 토큰을 설정합니다.
-        msg_type: text               # 메시지 유형을 text로 설정합니다.
-        personal_token: "NjhiMTU0YzQtYWU3Ni00NDc0LTljOGQtZDNjOGM2OWVhYmZkM2QxZjA2ZTctMzNh_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f"
-        msg:
-          - "Portfast가 설정된 interface 리스트와 컨피그 내용입니다"
-          - "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true`].{interfacename: key, configcontext: value}') }}"
-
-    - name: Cisco Webex Teams - Text Message to a Room
-      community.general.cisco_webex: # community.general.cisco_webex 모듈을 사용합니다.
-        recipient_type: roomId       # 수신자 유형을 roomId로 설정합니다.
-        recipient_id: "Y2lzY29zcGFyazovL3VzL1JPT00vZWY0MmE0MTAtN2NkZS0xMWVlLTg3MGQtMDM0MTYwZmMyMmEx" # Webex에서 본인의 ID 토큰을 설정합니다.
-        msg_type: text               # 메시지 유형을 text로 설정합니다.
-        personal_token: "NjhiMTU0YzQtYWU3Ni00NDc0LTljOGQtZDNjOGM2OWVhYmZkM2QxZjA2ZTctMzNh_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f"
-        msg:
-          - "Portfast가 설정되어있지만, BPDUguard가 설정되어있지 않아, 설정이 필요한 인터패이스 리스트입니다."
-          -  "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true` && value.spanning_tree_bpduguard==`disable`].{interface: key, value: value}') }}"
+ #   - name: Cisco Webex Teams - Text Message to a Room
+ #     community.general.cisco_webex: # community.general.cisco_webex 모듈을 사용합니다.
+ #       recipient_type: roomId       # 수신자 유형을 roomId로 설정합니다.
+ #       recipient_id: "Y2lzY29zcGFyazovL3VzL1JPT00vZWY0MmE0MTAtN2NkZS0xMWVlLTg3MGQtMDM0MTYwZmMyMmEx" # room ID로 설정.
+ #       msg_type: text               # 메시지 유형을 text로 설정합니다.
+ #       personal_token: "NjhiMTU0YzQtYWU3Ni00NDc0LTljOGQtZDNjOGM2OWVhYmZkM2QxZjA2ZTctMzNh_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f" #본인의 Bearer Token을 설정합니다.
+ #       msg:
+ #         - "Portfast가 설정된 interface 리스트 입니다"
+ #         - "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true`].{interfacename: key}')}}"
+#
+ #   - name: Cisco Webex Teams - Text Message to a Room
+ #     community.general.cisco_webex: # community.general.cisco_webex 모듈을 사용합니다.
+ #       recipient_type: roomId       # 수신자 유형을 roomId로 설정합니다.
+ #       recipient_id: "Y2lzY29zcGFyazovL3VzL1JPT00vZWY0MmE0MTAtN2NkZS0xMWVlLTg3MGQtMDM0MTYwZmMyMmEx" # room ID로 설정.
+ #       msg_type: text               # 메시지 유형을 text로 설정합니다.
+ #       personal_token: "NjhiMTU0YzQtYWU3Ni00NDc0LTljOGQtZDNjOGM2OWVhYmZkM2QxZjA2ZTctMzNh_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f" #본인의 Bearer Token을 설정합니다.
+ #       msg:
+ #         - "Portfast가 설정된 interface 리스트와 컨피그 내용입니다"
+ #         - "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true`].{interfacename: key, configcontext: value}') }}"
+#
+ #   - name: Cisco Webex Teams - Text Message to a Room
+ #     community.general.cisco_webex: # community.general.cisco_webex 모듈을 사용합니다.
+ #       recipient_type: roomId       # 수신자 유형을 roomId로 설정합니다.
+ #       recipient_id: "Y2lzY29zcGFyazovL3VzL1JPT00vZWY0MmE0MTAtN2NkZS0xMWVlLTg3MGQtMDM0MTYwZmMyMmEx" # room ID로 설정.
+ #       msg_type: text               # 메시지 유형을 text로 설정합니다.
+ #       personal_token: "NjhiMTU0YzQtYWU3Ni00NDc0LTljOGQtZDNjOGM2OWVhYmZkM2QxZjA2ZTctMzNh_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f" #본인의 Bearer Token을 설정합니다.
+ #       msg:
+ #         - "Portfast가 설정되어있지만, BPDUguard가 설정되어있지 않아, 설정이 필요한 인터패이스 리스트입니다."
+ #         -  "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true` && value.spanning_tree_bpduguard==`disable`].{interface: key, value: value}') }}"
