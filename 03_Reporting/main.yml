@@ -95,7 +95,7 @@
         dest: templates/multi_interface_info.csv
 
     - name: Read CSV file
-      command: cat ./path/multi_interface_info.csv
+      command: cat templates/multi_interface_info.csv
       register: csv_data
 
 # Cisco Webex Teams에 CSV 파일을 보내는 작업을 정의합니다.
