@@ -1,15 +1,61 @@
 ---
-- name: Gather interface facts from Cisco NXOS devices
+- name: Gather interface facts from Cisco IOSXE devices
   hosts: switches
   gather_facts: no
   roles:
     - ../../roles/ansible-pyats
   tasks:
     - name: Spanning Tree Protocol # 작업의 이름을 정의합니다.
-      pyats_parse_command: 
-        command: show spanning-tree interface GigabitEthernet 1/0/5 detail  # 실행할 명령을 정의합니다.
+      pyats_parse_command:
+        command: show running-config | section ^interface
       register: stp # 명령의 결과를 'stp' 변수에 저장합니다.
 
-    - debug: # debug 모듈을 사용하여 디버깅 메시지를 출력합니다.
-        msg: # 
-          - "Hostname: {{ stp.structured}}"
+    - name: pyATS를 통해 구조화된 데이터 출력
+      debug:
+        msg:
+          - " {{ stp.structured }}"
+    - name: dict2items 활용 출력
+      debug:
+        msg: "{{ stp.structured.interfaces | dict2items }}"
+
+    - name: portfast enable된 인터페이스의 이름 출력하기
+      debug:
+        msg: "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true`].{interfacename: key}') }}"
+
+    - name: portfast enable된 인터페이스의 이름과 러닝컨피그 함께 출력하기
+      debug:
+        msg: "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true`].{interfacename: key, configcontext: value}') }}"
+
+    - name: portfast enable && bpduguard disable list 출력
+      debug:
+        msg: "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true` && value.spanning_tree_bpduguard==`disable`].{interface: key, value: value}') }}"
+
+    - name: Cisco Webex Teams - Text Message to a Room
+      community.general.cisco_webex: # community.general.cisco_webex 모듈을 사용합니다.
+        recipient_type: roomId       # 수신자 유형을 roomId로 설정합니다.
+        recipient_id: "Y2lzY29zcGFyazovL3VzL1JPT00vZWY0MmE0MTAtN2NkZS0xMWVlLTg3MGQtMDM0MTYwZmMyMmEx" # Webex에서 본인의 ID 토큰을 설정합니다.
+        msg_type: text               # 메시지 유형을 text로 설정합니다.
+        personal_token: "NjhiMTU0YzQtYWU3Ni00NDc0LTljOGQtZDNjOGM2OWVhYmZkM2QxZjA2ZTctMzNh_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f"
+        msg:
+          - "Portfast가 설정된 interface 리스트 입니다"
+          - "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true`].{interfacename: key}')}}"
+
+    - name: Cisco Webex Teams - Text Message to a Room
+      community.general.cisco_webex: # community.general.cisco_webex 모듈을 사용합니다.
+        recipient_type: roomId       # 수신자 유형을 roomId로 설정합니다.
+        recipient_id: "Y2lzY29zcGFyazovL3VzL1JPT00vZWY0MmE0MTAtN2NkZS0xMWVlLTg3MGQtMDM0MTYwZmMyMmEx" # Webex에서 본인의 ID 토큰을 설정합니다.
+        msg_type: text               # 메시지 유형을 text로 설정합니다.
+        personal_token: "NjhiMTU0YzQtYWU3Ni00NDc0LTljOGQtZDNjOGM2OWVhYmZkM2QxZjA2ZTctMzNh_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f"
+        msg:
+          - "Portfast가 설정된 interface 리스트와 컨피그 내용입니다"
+          - "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true`].{interfacename: key, configcontext: value}') }}"
+
+    - name: Cisco Webex Teams - Text Message to a Room
+      community.general.cisco_webex: # community.general.cisco_webex 모듈을 사용합니다.
+        recipient_type: roomId       # 수신자 유형을 roomId로 설정합니다.
+        recipient_id: "Y2lzY29zcGFyazovL3VzL1JPT00vZWY0MmE0MTAtN2NkZS0xMWVlLTg3MGQtMDM0MTYwZmMyMmEx" # Webex에서 본인의 ID 토큰을 설정합니다.
+        msg_type: text               # 메시지 유형을 text로 설정합니다.
+        personal_token: "NjhiMTU0YzQtYWU3Ni00NDc0LTljOGQtZDNjOGM2OWVhYmZkM2QxZjA2ZTctMzNh_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f"
+        msg:
+          - "Portfast가 설정되어있지만, BPDUguard가 설정되어있지 않아, 설정이 필요한 인터패이스 리스트입니다."
+          -  "{{ stp.structured.interfaces | dict2items | json_query('[?value.spanning_tree_portfast==`true` && value.spanning_tree_bpduguard==`disable`].{interface: key, value: value}') }}"
