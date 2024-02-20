@@ -33,7 +33,7 @@
 
     - debug:
         msg:
-          - "메모리 전체량: {{ memory.structured.memory_usage.memory_usage_total_kb }}%"
+          - "메모리 전체량: {{ memory.structured.memory_usage.memory_usage_total_kb }}"
           - "메모리 사용 가능량: {{ memory.structured.memory_usage.memory_usage_free_kb }}"
           - "메모리 사용 불가능량: {{ memory.structured.memory_usage.memory_usage_used_kb }}"
    
