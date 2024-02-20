@@ -104,5 +104,5 @@
         recipient_type: roomId       # 수신자 유형을 roomId로 설정합니다.
         recipient_id: "Y2lzY29zcGFyazovL3VzL1JPT00vZWY0MmE0MTAtN2NkZS0xMWVlLTg3MGQtMDM0MTYwZmMyMmEx" 
         msg_type: text               # 메시지 유형을 text로 설정합니다.
-        personal_token: "NTM2Nzk5MmEtMTAwNi00MjU0LThkNzMtYTNhM2FiMWRkYzAzYjhiYTNlZWQtMGU2_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f"
+        personal_token: "NjhiMTU0YzQtYWU3Ni00NDc0LTljOGQtZDNjOGM2OWVhYmZkM2QxZjA2ZTctMzNh_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f"
         msg: "{{ csv_data.stdout }}" # 보낼 메시지를 설정합니다. 여기서는 csv_data.stdout 변수의 값을 사용합니다.
