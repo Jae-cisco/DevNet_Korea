@@ -2,9 +2,11 @@
 This repository is built for Korea Innovation DevNet Event hosting repository. <br/>  
 이 레포지토리는 2024.2.21 광운대학교 시스코 이노베이션 센터에서 진행된 Ansible 101++ 네트워크 자동화 세션의 코드와 자료가 포함되어 있습니다. <br/>
 각 폴더마다, 진행된 세션의 코드와 발표자료가 함께 업로드 되어 있습니다.
+=======================================================
 
 **Agenda #1 - 01_NXOS_facts/** <br/>
 **Ansible과 NXOS**
+------------------------------------
 - Ansible NXOS 모듈을 활용하여 Nexus 스위치의 정보를 가져옵니다. <br/>
 - 가져온 정보를 토대로 특정 정보만 Fetch하여 출력합니다. <br/>
 ><img width="1177" alt="스크린샷 2024-02-27 오후 11 57 13" src="https://github.com/Jae-cisco/DevNet_Korea/assets/76939023/3bca339b-90b8-4980-b2af-8918b671b401">
