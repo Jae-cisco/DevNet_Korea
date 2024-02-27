@@ -7,7 +7,7 @@ This repository is built for Korea Innovation DevNet Event hosting repository. <
 **Ansible과 NXOS**
 - Ansible NXOS 모듈을 활용하여 Nexus 스위치의 정보를 가져옵니다. <br/>
 - 가져온 정보를 토대로 특정 정보만 Fetch하여 출력합니다. <br/>
-<img width="1177" alt="스크린샷 2024-02-27 오후 11 57 13" src="https://github.com/Jae-cisco/DevNet_Korea/assets/76939023/3bca339b-90b8-4980-b2af-8918b671b401">
+><img width="1177" alt="스크린샷 2024-02-27 오후 11 57 13" src="https://github.com/Jae-cisco/DevNet_Korea/assets/76939023/3bca339b-90b8-4980-b2af-8918b671b401">
 
 **이번 세션에서는..** <br/>
 <img width="1177" alt="스크린샷 2024-02-28 오전 12 01 56" src="https://github.com/Jae-cisco/DevNet_Korea/assets/76939023/1a544d49-8482-4455-9635-bb44ee833ef3">
