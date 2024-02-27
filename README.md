@@ -1,8 +1,8 @@
 # DevNet_Korea
-=======================================================
-This repository is built for Korea Innovation DevNet Event hosting repository. <br/>  
-이 레포지토리는 2024.2.21 광운대학교 시스코 이노베이션 센터에서 진행된 Ansible 101++ 네트워크 자동화 세션의 코드와 자료가 포함되어 있습니다. <br/>
-각 폴더마다, 진행된 세션의 코드와 발표자료가 함께 업로드 되어 있습니다.
+
+#This repository is built for Korea Innovation DevNet Event hosting repository. <br/>  
+#이 레포지토리는 2024.2.21 광운대학교 시스코 이노베이션 센터에서 진행된 Ansible 101++ 네트워크 자동화 세션의 코드와 자료가 포함되어 있습니다. <br/>
+#각 폴더마다, 진행된 세션의 코드와 발표자료가 함께 업로드 되어 있습니다.
 
 
 **Agenda #1 - 01_NXOS_facts/** <br/>
