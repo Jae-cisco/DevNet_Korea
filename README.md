@@ -26,5 +26,8 @@ Agenda #3 - 02_IOSXE/03_Reporting
 
 
 이 세션에서 진행할 내용을 미리 살펴봅시다!
+<img width="1166" alt="스크린샷 2024-02-28 오전 12 06 42" src="https://github.com/Jae-cisco/DevNet_Korea/assets/76939023/910de404-10c4-451f-87e9-5655ce552333">
+<img width="1177" alt="스크린샷 2024-02-28 오전 12 07 36" src="https://github.com/Jae-cisco/DevNet_Korea/assets/76939023/6dd8d943-83f2-4726-83e4-fd705b5d76de">
+
 <img width="675" alt="스크린샷 2024-02-02 오후 4 03 23" src="https://github.com/Jae-cisco/DevNet_Korea/assets/76939023/e257872b-bb13-468f-8dda-d4e7cf610805">
 <img width="679" alt="스크린샷 2024-02-02 오후 4 03 06" src="https://github.com/Jae-cisco/DevNet_Korea/assets/76939023/c90279dd-66ee-40ac-8f45-42347d8f7841">
