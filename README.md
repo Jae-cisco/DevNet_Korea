@@ -1,8 +1,9 @@
 # DevNet_Korea
+=======================================================
 This repository is built for Korea Innovation DevNet Event hosting repository. <br/>  
 이 레포지토리는 2024.2.21 광운대학교 시스코 이노베이션 센터에서 진행된 Ansible 101++ 네트워크 자동화 세션의 코드와 자료가 포함되어 있습니다. <br/>
 각 폴더마다, 진행된 세션의 코드와 발표자료가 함께 업로드 되어 있습니다.
-=======================================================
+
 
 **Agenda #1 - 01_NXOS_facts/** <br/>
 **Ansible과 NXOS**
@@ -20,7 +21,7 @@ This repository is built for Korea Innovation DevNet Event hosting repository. <
 
 **Agenda #2 - 02_IOSXE/** <br/>
 **Ansible로 네트워크 장비 정보수집 해보기 - IOSXE** <br/>
-
+------------------------------------
 **이번 세션에서는..** <br/>
 - IOS XE Catalyst 스위치의 정보를 활용하여 가져옵니다. <br/>
 - Vendor-agnostic 스위치 테스트 Tool인 PyATS를 활용하여 Ansible과 함께 사용하는 방법을 제공합니다. 
@@ -36,6 +37,7 @@ This repository is built for Korea Innovation DevNet Event hosting repository. <
 
 **Agenda #3 - 02_IOSXE/03_Reporting** <br/>
 **Ansible 활용 네트워크 점검 자동화 및 리포팅** <br/>
+------------------------------------
 
 - 기초 Ansible 문법에 대해 설명합니다. <br/>
 - Spanning Tree Protocol를 Ansible을 통해 모니터링하고 루프를 방지하는 방법에 대하여 설명합니다. <br/>
